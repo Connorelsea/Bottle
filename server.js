@@ -16,7 +16,7 @@ app.use(methodOverride());
 app.listen(3000);
 console.log("App listening on port 3000");
 
-require("./Routers/router_setup").createRoutes(app);
+require("./Routers/router_setup")(app).createRoutes(app);
 
 // app.get("*", function(req, res) {
 // 	res.sendFile("./public/index.html");
