@@ -5,10 +5,18 @@ exports.createRoutes = function(app) {
 	var routes_auth   = require("./routes_auth");
 	var authenticator = require("../Controllers/authenticator")
 
-	router_auth.get  ("/test", [authenticator.checkAuth], routes_auth.test);
-	router_auth.post (routes_auth.authenticate_loc, routes_auth.authenticate_action)
-
 	// Attach all routes to the Express app
 
-	app.use("/api", router_auth)
+	app.use("/api", buildRoutes(routes_auth.routes, router_auth));
+
+}
+
+var buildRoutes = function buildRoutes(routes, router) {
+
+	routes.forEach(function(route) {
+		     if ( route.type === "POST" ) router.post (route.location, route.middleware, route.action);
+		else if ( route.type === "GET"  ) router.get  (route.location, route.middleware, route.action);
+	});
+
+	return router;
 }

@@ -6,8 +6,6 @@ var expressjwt     = require("express-jwt");
 
 var app = express();
 
-var secretKeep = "asdasdasd"
-
 app.use(express.static(__dirname + "/public"));
 //app.use("/api", expressjwt({secret : secretKeep}))
 app.use(bodyParser.urlencoded({ "extended" : "true" }));

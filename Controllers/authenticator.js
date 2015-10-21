@@ -1,7 +1,6 @@
 var jwt = require("jsonwebtoken")
 
 exports.auth = function(req, res) {
-	console.log("here")
 
 	if (req.body.username && req.body.password) {
 
@@ -23,7 +22,7 @@ exports.auth = function(req, res) {
 
 		if (!req.body.username && !req.body.password) var message = "No username or password supplied.";
 		else if (!req.body.username) var message = "No username supplied.";
-		else if (!req.body.password) var message = "No password supplied."
+		else if (!req.body.password) var message = "No password supplied.";
 
 		// Return a JSON object to the user indicating the reason for failure.
 
